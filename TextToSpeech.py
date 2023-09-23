@@ -5,4 +5,4 @@ class Speaker:
     def tts(self, text):
         speech = gTTS(text=text, lang="en")
 
-        speech.save("Speech/speechTest.mp4")
+        speech.save("Speech/speech.mp4")

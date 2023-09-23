@@ -1,5 +1,6 @@
 # Importing necessary libraries
 import cv2
+
 class PictureTaker:
     def __init__(self):
         # Setting camera to default camera
@@ -13,4 +14,4 @@ class PictureTaker:
         ret, frame = self.cap.read()
 
         # Saving the picture to a location
-        cv2.imwrite("Images/test.jpg", frame)
+        cv2.imwrite("Images/picture.jpg", frame)
