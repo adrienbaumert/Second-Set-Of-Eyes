@@ -3,6 +3,7 @@ from PictureTaking import PictureTaker
 from TextToSpeech import Speaker
 from ImageCaptioning import ImageCaptioner
 
+# Class that controls the app
 class Controller:
     def __init__(self):
         self.snapshot = PictureTaker()
@@ -11,8 +12,14 @@ class Controller:
 
     # Taking a picture and turning it into speech
     def takingPictureToSpeech(self):
-        self.snapshot.takePicture()
-        text = self.captioner.query("Images/test.jpg")
+        # Handles any errors
+        try:
+            self.snapshot.takePicture()
+            text = self.captioner.query("Images/picture.jpg")
 
-        text = text[0]["generated_text"]
-        self.speaker.tts(text)
+            path = self.speaker.tts(text)
+            self.speaker.speak(path)
+
+        except:
+            path = self.speaker.tts("There was an error, please try again.")
+            self.speaker.speak(path)
