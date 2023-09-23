@@ -4,5 +4,5 @@ from kivy.uix.boxlayout import BoxLayout
 class BoxLayout(BoxLayout):
     pass
 
-class VisionImparedApp(App):
+class Application(App):
     pass
