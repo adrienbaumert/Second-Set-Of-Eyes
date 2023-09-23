@@ -21,5 +21,5 @@ class Controller:
             self.speaker.speak(path)
 
         except:
-            path = self.speaker.tts("There was an error, please try again.")
+            path = self.speaker.tts("Image Captioning API is currently busy. Please try again.")
             self.speaker.speak(path)
