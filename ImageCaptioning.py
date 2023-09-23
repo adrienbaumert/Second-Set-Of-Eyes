@@ -20,4 +20,7 @@ class ImageCaptioner:
         with open(filename, "rb") as file:
             data = file.read()
         response = requests.post(self.API_URL, headers=self.headers, data=data)
-        return response.json()
+
+        text = response.json()[0]["generated_text"]
+
+        return text
