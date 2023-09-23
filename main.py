@@ -1,5 +1,4 @@
-from AppController import Controller
+from VisionImparedApp import Application
+app = Application()
 
-controller = Controller()
-
-controller.takingPictureToSpeech()
+app.run()

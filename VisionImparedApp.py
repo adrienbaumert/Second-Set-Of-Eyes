@@ -4,6 +4,9 @@ from kivy.lang import Builder
 from kivy.clock import Clock
 from time import time
 
+from BackendController import Controller
+controller = Controller()
+
 class AppBoxLayout(BoxLayout):
     # Defining a variable for the last time the main button was pressed
     last_tap_time = 0
@@ -11,7 +14,7 @@ class AppBoxLayout(BoxLayout):
     # Need dt because Clock.schedule_one() automatically passed dt
     # argument
     def on_button_hold(self, dt=None):
-        print("Held")
+        print("Tutorial")
 
     def on_button_press(self):
         # Schedule an event for button being held
@@ -23,7 +26,8 @@ class AppBoxLayout(BoxLayout):
         if current_time - self.last_tap_time < .5 and self.last_tap_time != 0:
             self.hold_event.cancel()
 
-            print("Been one second")
+            controller.takingPictureToSpeech()
+
             self.last_tap_time = current_time
         else:
             self.last_tap_time = current_time
