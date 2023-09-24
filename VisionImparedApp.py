@@ -16,14 +16,25 @@ class AppBoxLayout(BoxLayout):
     # Defining variable that keeps track of if the program is processing
     is_processing = False
 
+    # Defining variable that keeps track of if tutorial is playing
+    is_tutorial_playing = False
+
     # Need dt because Clock.schedule_one() automatically passed dt
     # argument
     def on_button_hold(self, dt=None):
-        threading.Thread(target=self.playingTutorial).start()
+        if self.is_tutorial_playing:
+            print("Is playing")
+
+        else:
+            threading.Thread(target=self.playingTutorial).start()
 
     def playingTutorial(self):
+        self.is_tutorial_playing = True
+
         playsound("Assets/Sounds/tutorial_1.mp4")
         playsound("Assets/Sounds/tutorial_2.mp4")
+
+        self.is_tutorial_playing = False
 
     def on_button_press(self):
         if self.is_processing:
