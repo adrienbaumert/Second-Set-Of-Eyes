@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 ## Contributing
 
-Being an open-source project, we warmly welcome contributions from the community. Whether it's bug fixes, feature additions, or documentation improvements, every contribution matters. Link to your contribution guidelines or add them here if available.
+Being an open-source project, contributions are welcome from the community. Bug fixes, feature additions, or documentation improvements, are greatly apprciated. 
 
 ## License
 
