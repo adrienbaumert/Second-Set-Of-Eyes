@@ -13,6 +13,9 @@ class AppBoxLayout(BoxLayout):
     # Defining a variable for the last time the main button was pressed
     last_tap_time = 0
 
+    # Defining variable that keeps track of if the program is processing
+    is_processing = False
+
     # Need dt because Clock.schedule_one() automatically passed dt
     # argument
     def on_button_hold(self, dt=None):
@@ -23,25 +26,32 @@ class AppBoxLayout(BoxLayout):
         playsound("Assets/Sounds/tutorial_2.mp4")
 
     def on_button_press(self):
-        # Schedule an event for button being held
-        self.hold_event = Clock.schedule_once(self.on_button_hold, 1.5)
-
-        # Checking if the last time the main button was pressed was less than .5 seconds
-        # ago
-        current_time = time()
-        if current_time - self.last_tap_time < .5 and self.last_tap_time != 0:
-            self.hold_event.cancel()
-
-            # Starting the BackendController in a different thread
-            threading.Thread(target=controller.takingPictureToSpeech).start()
-
-            # Scheduling the audible processing message
-            self.event = Clock.schedule_interval(self.processing, 1)
-
-            self.last_tap_time = current_time
+        if self.is_processing:
+            return
 
         else:
-            self.last_tap_time = current_time
+            # Schedule an event for button being held
+            self.hold_event = Clock.schedule_once(self.on_button_hold, 1.5)
+
+            # Checking if the last time the main button was pressed was less than .5 seconds
+            # ago
+            current_time = time()
+            if current_time - self.last_tap_time < .5 and self.last_tap_time != 0:
+                self.hold_event.cancel()
+
+                # Starting the BackendController in a different thread
+                threading.Thread(target=controller.takingPictureToSpeech).start()
+
+                # Setting the processing flag
+                self.is_processing = True
+
+                # Scheduling the audible processing message
+                self.event = Clock.schedule_interval(self.processing, 1)
+
+                self.last_tap_time = current_time
+
+            else:
+                self.last_tap_time = current_time
 
 # Canceling the event scheduled to happen on button hold
     def on_button_release(self):
@@ -58,6 +68,9 @@ class AppBoxLayout(BoxLayout):
         else:
             self.event.cancel()
             controller.setFinishedFalse()
+
+            # Setting the processing flag
+            self.is_processing = False
 
 class Application(App):
     def build(self):
