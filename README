@@ -1,18 +1,13 @@
-# 🚀 Second-Set-Of-Eyes
+# Second-Set-Of-Eyes
 
-## 📖 Description
+## Description
 
-**Second-Set-Of-Eyes** is a powerful, open-source framework specifically crafted to aid blind and vision-impaired individuals in navigating the world around them. As an open-source initiative, everyone is invited t harnessing this framework to pave the way for building impactful applications and software, tailor-made for the blind and vision-impaired community.
+**Second-Set-Of-Eyes** is an open-source framework designed to assist blind and vision-impaired individuals in navigating their surroundings. With a core mission to empower developers, this framework can be leveraged to create robust applications or software tailored for the blind and vision-impaired community.
 
-The essence of its functionality:
-- 📷 A swift double-tap captures a snapshot using `cv2`.
-- 🤖 The image is promptly processed via Salesforce's image captioning API.
-- 🗣 The resultant description is vocalized using Google's Text-to-Speech.
+At its core, the functionality is simple yet powerful: with a double-tap, it captures an image using `cv2`. This image is then processed through Salesforce's image captioning API, and the resulting description is made audible using Google's Text-to-Speech.
 
-**Open-source at heart**, Developers are invited to enrich, modify, and implement Second-Set-Of-Eyes in applications.
+Emphasizing its open-source nature, Second-Set-Of-Eyes invites developers from around the world to contribute, adapt, and implement this framework in diverse applications, pushing the boundaries of what's possible in accessibility technology.
 
-## 🔧 Installation
+## Installation
 
-1. 📥 Clone the repository:
-```bash
-git clone https://github.com/adrienbaumert/Second-Set-Of-Eyes
+1. **Clone the repository**:
