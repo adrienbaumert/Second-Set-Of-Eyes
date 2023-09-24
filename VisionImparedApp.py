@@ -19,7 +19,8 @@ class AppBoxLayout(BoxLayout):
         threading.Thread(target=self.playingTutorial).start()
 
     def playingTutorial(self):
-        playsound("Assets/Sounds/tutorial.mp4")
+        playsound("Assets/Sounds/tutorial_1.mp4")
+        playsound("Assets/Sounds/tutorial_2.mp4")
 
     def on_button_press(self):
         # Schedule an event for button being held
