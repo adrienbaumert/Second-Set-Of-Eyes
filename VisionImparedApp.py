@@ -23,7 +23,7 @@ class AppBoxLayout(BoxLayout):
     # argument
     def on_button_hold(self, dt=None):
         if self.is_tutorial_playing:
-            print("Is playing")
+            print("End tutorial")
 
         else:
             threading.Thread(target=self.playingTutorial).start()
