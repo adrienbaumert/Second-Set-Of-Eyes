@@ -2,7 +2,9 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.clock import Clock
+import threading
 from time import time
+from playsound import playsound
 
 from BackendController import Controller
 controller = Controller()
@@ -26,15 +28,32 @@ class AppBoxLayout(BoxLayout):
         if current_time - self.last_tap_time < .5 and self.last_tap_time != 0:
             self.hold_event.cancel()
 
-            controller.takingPictureToSpeech()
+            # Starting the BackendController in a different thread
+            threading.Thread(target=controller.takingPictureToSpeech).start()
+
+            # Scheduling the audible processing message
+            self.event = Clock.schedule_interval(self.processing, 1)
 
             self.last_tap_time = current_time
+
         else:
             self.last_tap_time = current_time
 
 # Canceling the event scheduled to happen on button hold
     def on_button_release(self):
         self.hold_event.cancel()
+
+    # Plays processing on a different thread than the image captioning api
+    # so that a loading noise can be played
+    # Need dt because Clock.schedule_one() automatically passed dt
+    # argument
+    def processing(self, dt=None):
+        if controller.checkFinished() == False:
+            playsound("Assets/Processing/processing.mp4")
+
+        else:
+            self.event.cancel()
+            controller.setFinishedFalse()
 
 class Application(App):
     def build(self):
