@@ -16,7 +16,7 @@ Emphasizing its open-source nature, Developers are invited to contribute, adapt,
 git clone https://github.com/adrienbaumert/Second-Set-Of-Eyes
 ```
 
-3. **Navigate to the cloned directory and install the required packages**:
+2. **Navigate to the cloned directory and install the required packages**:
 
 ```
 cd Second-Set-Of-Eyes
@@ -25,10 +25,6 @@ cd Second-Set-Of-Eyes
 ```
 pip install -r requirements.txt
 ```
-
-## Usage
-
-Detailed instructions on how to use the framework, including any configuration or setup details, can be added here.
 
 ## Contributing
 
