@@ -16,7 +16,10 @@ class AppBoxLayout(BoxLayout):
     # Need dt because Clock.schedule_one() automatically passed dt
     # argument
     def on_button_hold(self, dt=None):
-        print("Tutorial")
+        threading.Thread(target=self.playingTutorial).start()
+
+    def playingTutorial(self):
+        playsound("Assets/Sounds/tutorial.mp4")
 
     def on_button_press(self):
         # Schedule an event for button being held
