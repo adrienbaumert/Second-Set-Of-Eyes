@@ -21,6 +21,7 @@ git clone https://github.com/adrienbaumert/Second-Set-Of-Eyes
 ```
 cd Second-Set-Of-Eyes
 ```
+
 ```
 pip install -r requirements.txt
 ```
