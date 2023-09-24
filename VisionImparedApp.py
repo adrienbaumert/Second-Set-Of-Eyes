@@ -4,7 +4,7 @@ from kivy.lang import Builder
 from kivy.clock import Clock
 import threading
 from time import time
-from playsound import playsound
+import pygame.mixer
 
 from BackendController import Controller
 controller = Controller()
@@ -19,22 +19,44 @@ class AppBoxLayout(BoxLayout):
     # Defining variable that keeps track of if tutorial is playing
     is_tutorial_playing = False
 
+    # Making a flag for the tutorial being skipped
+    tutorialSkipped = False
+
+    # Setting the pygame mixer module
+    pygame.mixer.init()
+
     # Need dt because Clock.schedule_one() automatically passed dt
     # argument
     def on_button_hold(self, dt=None):
         if self.is_tutorial_playing:
-            print("End tutorial")
+            pygame.mixer.stop()
+            self.tutorialSkipped = True
 
         else:
             threading.Thread(target=self.playingTutorial).start()
 
     def playingTutorial(self):
+        sleeper = time.time()
+
         self.is_tutorial_playing = True
 
-        playsound("Assets/Sounds/tutorial_1.mp4")
-        playsound("Assets/Sounds/tutorial_2.mp4")
+        tutorial_1 = pygame.mixer.Sound("Assets/Sounds/tutorial_1.mp4")
+        tutorial_1.play()
+
+        # Loop of nothing while text finishes playing
+        while pygame.mixer.get_busy():
+            pass
+
+        if self.tutorialSkipped == False:
+            tutorial_2 = pygame.mixer.Sound("Assets/Sounds/tutorial_2.mp4")
+            tutorial_2.play()
+
+            # Loop of nothing while text finishes playing
+            while pygame.mixer.get_busy():
+                pass
 
         self.is_tutorial_playing = False
+        self.tutorialSkipped = False
 
     def on_button_press(self):
         if self.is_processing:
@@ -74,7 +96,8 @@ class AppBoxLayout(BoxLayout):
     # argument
     def processing(self, dt=None):
         if controller.checkFinished() == False:
-            playsound("Assets/Sounds/processing.mp4")
+            processingSound = pygame.mixer.Sound("Assets/Sounds/processing.mp4")
+            processingSound.play()
 
         else:
             self.event.cancel()
@@ -95,4 +118,5 @@ class Application(App):
     # argument
     def welcomeMessage(self, dt=None):
         # Playing welcome message on app boot
-        playsound("Assets/Sounds/welcome.mp4")
+        welcomeSound = pygame.mixer.Sound("Assets/Sounds/welcome.mp4")
+        welcomeSound.play()
