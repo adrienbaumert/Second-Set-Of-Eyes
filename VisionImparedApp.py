@@ -11,7 +11,7 @@ controller = Controller()
 
 class AppBoxLayout(BoxLayout):
     # Making a flag for the tutorial being skipped
-    welcome_playing = False
+    welcome_playing = True
 
     # Defining a variable for the last time the main button was pressed
     last_tap_time = 0
@@ -36,7 +36,10 @@ class AppBoxLayout(BoxLayout):
             self.tutorial_skipped = True
 
         else:
-            threading.Thread(target=self.playingTutorial).start()
+            # Checks the welcome message flag so that no processes run
+            # while it is True
+            if self.welcome_playing == False:
+                threading.Thread(target=self.playingTutorial).start()
 
     def playingTutorial(self):
         self.is_tutorial_playing = True
@@ -60,7 +63,9 @@ class AppBoxLayout(BoxLayout):
         self.tutorial_skipped = False
 
     def on_button_press(self):
-        if self.is_processing:
+        # Checks the welcome message flag so that no processes run
+        # while it is True
+        if self.is_processing or self.welcome_playing:
             return
 
         else:
@@ -89,7 +94,10 @@ class AppBoxLayout(BoxLayout):
 
 # Canceling the event scheduled to happen on button hold
     def on_button_release(self):
-        self.hold_event.cancel()
+        # Checks the welcome message flag so that no processes run
+        # while it is True
+        if self.welcome_playing == False:
+            self.hold_event.cancel()
 
     # Plays processing on a different thread than the image captioning api
     # so that a loading noise can be played
@@ -118,6 +126,15 @@ class Application(App):
     # Need dt because Clock.schedule_one() automatically passed dt
     # argument
     def welcomeMessage(self, dt=None):
+        # Setting the welcome message flag to be False
+        AppBoxLayout.welcome_playing = True
+
         # Playing welcome message on app boot
         welcomeSound = pygame.mixer.Sound("Assets/Sounds/welcome.mp4")
         welcomeSound.play()
+
+        while pygame.mixer.get_busy():
+            pass
+
+        # Setting playing the welcome message flag to False
+        AppBoxLayout.welcome_playing = False
