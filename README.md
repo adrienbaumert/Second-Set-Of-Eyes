@@ -11,11 +11,11 @@ Emphasizing its open-source nature, Developers are invited to contribute, adapt,
 ## Installation
 
 1. **Clone the repository**:
-git clone https://github.com/adrienbaumert/Second-Set-Of-Eyes
+`git clone https://github.com/adrienbaumert/Second-Set-Of-Eyes`
 
 2. **Navigate to the cloned directory and install the required packages**:
-cd Second-Set-Of-Eyes 
-pip install -r requirements.txt
+`cd Second-Set-Of-Eyes 
+pip install -r requirements.txt`
 
 ## Usage
 
