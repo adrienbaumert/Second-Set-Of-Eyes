@@ -6,6 +6,7 @@ from playsound import playsound
 class Speaker:
     def tts(self, text):
         speech = gTTS(text=text, lang="en")
+
         speech.save("Speech/speech.mp4")
 
         return "Speech/speech.mp4"
