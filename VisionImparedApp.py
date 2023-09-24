@@ -49,7 +49,7 @@ class AppBoxLayout(BoxLayout):
     # argument
     def processing(self, dt=None):
         if controller.checkFinished() == False:
-            playsound("Assets/Processing/processing.mp4")
+            playsound("Assets/Sounds/processing.mp4")
 
         else:
             self.event.cancel()
@@ -59,3 +59,12 @@ class Application(App):
     def build(self):
         Builder.load_file("visionimpared.kv")
         return AppBoxLayout()
+
+    def on_start(self):
+        threading.Thread(target=self.welcomeMessage).start()
+
+    # Need dt because Clock.schedule_one() automatically passed dt
+    # argument
+    def welcomeMessage(self, dt=None):
+        # Playing welcome message on app boot
+        playsound("Assets/Sounds/welcome.mp4")

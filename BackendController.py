@@ -17,9 +17,6 @@ class Controller:
         # can know when to stop
         self.finished = False
 
-    def runApp(self):
-        self.app.run()
-
     # Taking a picture and turning it into speech
     def takingPictureToSpeech(self):
         # Handles any errors
