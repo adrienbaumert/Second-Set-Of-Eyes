@@ -10,6 +10,9 @@ from BackendController import Controller
 controller = Controller()
 
 class AppBoxLayout(BoxLayout):
+    # Making a flag for the tutorial being skipped
+    welcome_playing = False
+
     # Defining a variable for the last time the main button was pressed
     last_tap_time = 0
 
@@ -20,7 +23,7 @@ class AppBoxLayout(BoxLayout):
     is_tutorial_playing = False
 
     # Making a flag for the tutorial being skipped
-    tutorialSkipped = False
+    tutorial_skipped = False
 
     # Setting the pygame mixer module
     pygame.mixer.init()
@@ -30,14 +33,12 @@ class AppBoxLayout(BoxLayout):
     def on_button_hold(self, dt=None):
         if self.is_tutorial_playing:
             pygame.mixer.stop()
-            self.tutorialSkipped = True
+            self.tutorial_skipped = True
 
         else:
             threading.Thread(target=self.playingTutorial).start()
 
     def playingTutorial(self):
-        sleeper = time.time()
-
         self.is_tutorial_playing = True
 
         tutorial_1 = pygame.mixer.Sound("Assets/Sounds/tutorial_1.mp4")
@@ -47,7 +48,7 @@ class AppBoxLayout(BoxLayout):
         while pygame.mixer.get_busy():
             pass
 
-        if self.tutorialSkipped == False:
+        if self.tutorial_skipped == False:
             tutorial_2 = pygame.mixer.Sound("Assets/Sounds/tutorial_2.mp4")
             tutorial_2.play()
 
@@ -56,7 +57,7 @@ class AppBoxLayout(BoxLayout):
                 pass
 
         self.is_tutorial_playing = False
-        self.tutorialSkipped = False
+        self.tutorial_skipped = False
 
     def on_button_press(self):
         if self.is_processing:
