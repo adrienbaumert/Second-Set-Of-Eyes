@@ -2,6 +2,7 @@
 from PictureTaking import PictureTaker
 from TextToSpeech import Speaker
 from ImageCaptioning import ImageCaptioner
+import time
 
 # Class that controls the app
 class Controller:
@@ -30,12 +31,20 @@ class Controller:
 
             self.finished = True
 
+            # Sleeping for one second so that audible processing can
+            # finish playing
+            time.sleep(1)
+
             self.speaker.speak(path)
 
         except:
             path = self.speaker.tts("Image Captioning API is currently busy. Please try again.")
 
             self.finished = True
+
+            # Sleeping for one second so that audible processing can
+            # finish playing
+            time.sleep(1)
 
             self.speaker.speak(path)
 
