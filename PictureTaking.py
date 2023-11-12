@@ -23,7 +23,7 @@ import cv2
 class PictureTaker:
     def takePicture(self):
         # Setting camera to default camera
-        self.cap = cv2.VideoCapture(4)
+        self.cap = cv2.VideoCapture(0)
 
         # Setting the camera frame rate
         self.cap.set(cv2.CAP_PROP_FPS, 30)
@@ -33,6 +33,12 @@ class PictureTaker:
 
         # Taking a picture
         ret, frame = self.cap.read()
+
+        # [TESTING]
+        import os
+        # Create 'Images' directory if it does not exist
+        if not os.path.exists('Images'):
+            os.makedirs('Images')
 
         # Saving the picture to a location
         cv2.imwrite("Images/picture.jpg", frame)

@@ -25,6 +25,9 @@ import threading
 from time import time
 import pygame.mixer
 
+import sys
+sys.path.append("../")
+
 from BackendController import Controller
 controller = Controller()
 
@@ -63,7 +66,7 @@ class AppBoxLayout(BoxLayout):
     def playingTutorial(self):
         self.is_tutorial_playing = True
 
-        tutorial_1 = pygame.mixer.Sound("Assets/Sounds/tutorial_1.mp4")
+        tutorial_1 = pygame.mixer.Sound("../Assets/Sounds/tutorial_1.mp4")
         tutorial_1.play()
 
         # Loop of nothing while text finishes playing
@@ -71,7 +74,7 @@ class AppBoxLayout(BoxLayout):
             pass
 
         if self.tutorial_skipped == False:
-            tutorial_2 = pygame.mixer.Sound("Assets/Sounds/tutorial_2.mp4")
+            tutorial_2 = pygame.mixer.Sound("../Assets/Sounds/tutorial_2.mp4")
             tutorial_2.play()
 
             # Loop of nothing while text finishes playing
@@ -124,7 +127,7 @@ class AppBoxLayout(BoxLayout):
     # argument
     def processing(self, dt=None):
         if controller.checkFinished() == False:
-            processingSound = pygame.mixer.Sound("Assets/Sounds/processing.mp4")
+            processingSound = pygame.mixer.Sound("../Assets/Sounds/processing.mp4")
             processingSound.play()
 
         else:
@@ -149,7 +152,7 @@ class Application(App):
         AppBoxLayout.welcome_playing = True
 
         # Playing welcome message on app boot
-        welcomeSound = pygame.mixer.Sound("Assets/Sounds/welcome.mp4")
+        welcomeSound = pygame.mixer.Sound("../Assets/Sounds/welcome.mp4")
         welcomeSound.play()
 
         while pygame.mixer.get_busy():
