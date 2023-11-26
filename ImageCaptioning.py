@@ -27,13 +27,13 @@ class ImageCaptioner:
         # Loading .env file
         load_dotenv()
 
-        # Setting a secret key constant to the value of the key
+        # Setting a user access token constant to the value of the key
         # stored in the .env file
-        self.SECRET_KEY = os.getenv("SECRET_KEY", "default_secret_key")
+        self.USER_ACCESS_TOKEN = os.getenv("USER_ACCESS_TOKEN", "default_user_access_token")
 
-        # Setting the image captioning API and secret key
+        # Setting the image captioning API and user access token
         self.API_URL = "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-large"
-        self.headers = {"Authorization": f"Bearer {self.SECRET_KEY}"}
+        self.headers = {"Authorization": f"Bearer {self.USER_ACCESS_TOKEN}"}
 
     def query(self, filename):
         with open(f"{filename}picture.jpg", "rb") as file:

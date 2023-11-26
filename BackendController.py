@@ -65,7 +65,6 @@ class Controller:
             self.speaker.speak(self.SPEECH_DIRECTORY)
 
         except:
-
             self.speaker.tts("Image Captioning API is currently busy. Please try again.", self.SPEECH_DIRECTORY)
 
             self.finished = True
