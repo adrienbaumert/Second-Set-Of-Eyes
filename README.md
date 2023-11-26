@@ -67,15 +67,17 @@ python main.py
 ## Debugging
 If you encounter any issues, please reference the following:
 
+*
 Ensure that your `.env` file is set up correctly:
 User access token is valid 
 User access token is added to the .env without quotes
 Image and speech directory are hardcoded with their absolute path
 Image and speech directory end with a /
 Image and speech directory are added without quotes
+*
 
 Test default cameras:
-By default the camera is set in cv2 to camera 0. If this is set incorrectly the program may act in unstale ways. Experiment with different values if you are encountering errors. This value is a consonant located in PictureTaking.py
+By default the camera is set in cv2 to camera 0. If this is set incorrectly the program may act in unstale ways. Experiment with different values if you are encountering errors. This value is a consonant located at the top PictureTaking.py:
 ```
 # Setting camera:
 CAMERA = 0
