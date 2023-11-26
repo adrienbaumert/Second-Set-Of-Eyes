@@ -52,7 +52,7 @@ USER_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## Requirement Note
 
-Please note that there are two requirements.txt files contained in this project. Installing the correct one is based off user needs. Installing the requirements.txt in the top level directory will install only the necessary packages for the framework. Installing the requirements.txt in the Demo folder in order to install all necessary packages to use the demo.
+Please note that there are two requirements.txt files contained in this project. Installing the correct one is based on user needs. Installing the requirements.txt in the top level directory will install only the necessary packages for the framework. Installing the requirements.txt in the Demo folder in order to install all necessary packages to use the demo.
 
 ## Instructions to Find Hugging Face User Access Token
 https://huggingface.co/docs/api-inference/quicktour
