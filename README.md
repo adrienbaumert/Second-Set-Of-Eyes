@@ -45,9 +45,13 @@ git clone https://github.com/adrienbaumert/Second-Set-Of-Eyes
 pip install -r requirements.txt
 ```
 
-3. Rename the `.env.template` file to `.env` and input your Hugging Face user access token
+3. Rename the `.env.template` file to `.env`
+
+4. Add your Hugging Face user access token and absolute path of your image and speech folder to your `.env` file
 ```
 USER_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+IMAGE_DIRECTORY=xxxx/xxxx/xxxx/xxxx/xxxx/
+SPEECH_DIRECTORY=xxxx/xxxx/xxxx/xxxx/xxxx/
 ```
 
 ## Requirement Note
