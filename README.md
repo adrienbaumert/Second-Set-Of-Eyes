@@ -30,7 +30,7 @@ Emphasizing its open-source nature, Developers are invited to contribute, adapt,
 
 - **Accessibility Framework**: The application effectively manages image capture, Salesforce image captioning API calls, and Google Text-To-Speech, to create a spoken description of a physical environment.
 - **Interactive Demo**: The application is packaged with a demo to help developers visualize ways the framework can be utilized.
-- **API Key Security**: The Hugging Face secret key is securely stored and accessed using a .env file, ensuring that sensitive information is not exposed.
+- **API Key Security**: The Hugging Face user access token is securely stored and accessed using a .env file, ensuring that sensitive information is not exposed.
 - **GNU License**: The project is released under the GNU General Public License, granting users the freedom to use, study, share, and modify the software.
 
 ## Installation
