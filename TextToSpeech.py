@@ -23,12 +23,10 @@ from playsound import playsound
 
 # Class that goes from text to speech and can play speech
 class Speaker:
-    def tts(self, text):
+    def tts(self, text, directory):
         speech = gTTS(text=text, lang="en")
 
-        speech.save("Speech/speech.mp4")
+        speech.save(f"{directory}speech.mp4")
 
-        return "Speech/speech.mp4"
-
-    def speak(self, text):
-        playsound(text)
+    def speak(self, directory):
+        playsound(f"{directory}speech.mp4")

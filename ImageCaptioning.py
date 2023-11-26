@@ -36,7 +36,7 @@ class ImageCaptioner:
         self.headers = {"Authorization": f"Bearer {self.SECRET_KEY}"}
 
     def query(self, filename):
-        with open(filename, "rb") as file:
+        with open(f"{filename}image.png", "rb") as file:
             data = file.read()
         response = requests.post(self.API_URL, headers=self.headers, data=data)
 

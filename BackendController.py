@@ -21,6 +21,8 @@
 from PictureTaking import PictureTaker
 from TextToSpeech import Speaker
 from ImageCaptioning import ImageCaptioner
+import os
+from dotenv import load_dotenv
 import time
 
 # Class that controls the app
@@ -36,14 +38,23 @@ class Controller:
         # can know when to stop
         self.finished = False
 
+        # Loading .env file
+        load_dotenv()
+
+        # Setting a image/speech directory constant to the value of the key
+        # stored in the .env file
+        self.IMAGE_DIRECTORY = os.getenv("IMAGE_DIRECTORY", "image_directory")
+        self.SPEECH_DIRECTORY = os.getenv("SPEECH_DIRECTORY", "speech_directory")
+
     # Taking a picture and turning it into speech
     def takingPictureToSpeech(self):
         # Handles any errors
         try:
-            self.snapshot.takePicture()
-            text = self.captioner.query("Images/picture.jpg")
+            self.snapshot.takePicture(self.IMAGE_DIRECTORY)
+            text = self.captioner.query(self.IMAGE_DIRECTORY)
 
-            path = self.speaker.tts(text)
+            # Saving the spoken text to the speech directory
+            self.speaker.tts(text, self.SPEECH_DIRECTORY)
 
             self.finished = True
 
@@ -51,10 +62,10 @@ class Controller:
             # finish playing
             time.sleep(1)
 
-            self.speaker.speak(path)
+            self.speaker.speak(self.SPEECH_DIRECTORY)
 
         except:
-            path = self.speaker.tts("Image Captioning API is currently busy. Please try again.")
+            path = self.speaker.tts("Image Captioning API is currently busy. Please try again.", self.SPEECH_DIRECTORY)
 
             self.finished = True
 
@@ -62,7 +73,7 @@ class Controller:
             # finish playing
             time.sleep(1)
 
-            self.speaker.speak(path)
+            self.speaker.speak(self.SPEECH_DIRECTORY)
 
     def checkFinished(self):
         return self.finished

@@ -21,7 +21,7 @@
 import cv2
 
 class PictureTaker:
-    def takePicture(self):
+    def takePicture(self, image_directory):
         # Setting camera to default camera
         self.cap = cv2.VideoCapture(0)
 
@@ -34,14 +34,8 @@ class PictureTaker:
         # Taking a picture
         ret, frame = self.cap.read()
 
-        # [TESTING]
-        import os
-        # Create 'Images' directory if it does not exist
-        if not os.path.exists('Images'):
-            os.makedirs('Images')
-
         # Saving the picture to a location
-        cv2.imwrite("Images/picture.jpg", frame)
+        cv2.imwrite(f"{image_directory}picture.jpg", frame)
 
         # Releasing the camera
         self.cap.release()
