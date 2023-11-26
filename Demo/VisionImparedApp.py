@@ -97,7 +97,7 @@ class AppBoxLayout(BoxLayout):
             # Checking if the last time the main button was pressed was less than .5 seconds
             # ago
             current_time = time()
-            if current_time - self.last_tap_time < .5 and self.last_tap_time != 0:
+            if current_time - self.last_tap_time < .5 and self.last_tap_time != 0 and self.is_tutorial_playing == False:
                 self.hold_event.cancel()
 
                 # Starting the BackendController in a different thread
