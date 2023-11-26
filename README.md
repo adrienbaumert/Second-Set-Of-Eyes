@@ -74,7 +74,7 @@ If you encounter any issues, please reference the following:
 - Image and speech directory end with a /
 - Image and speech directory are added without quotes
 
-----
+***
 
 **Default camera:**
 
@@ -86,6 +86,6 @@ This value is a constant located at the top PictureTaking.py:
 CAMERA = 0
 ```
 
-----
+***
 
 If you continue to encounter problems, please submit an issue on this repository.
