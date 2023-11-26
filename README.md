@@ -39,7 +39,7 @@ Emphasizing its open-source nature, Developers are invited to contribute, adapt,
 ```
 git clone https://github.com/adrienbaumert/Second-Set-Of-Eyes
 ```
-<br>
+
 2. Install the required Python packages (Please read note below before installation):
 ```
 pip install -r requirements.txt
