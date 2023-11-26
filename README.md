@@ -86,4 +86,6 @@ This value is a constant located at the top PictureTaking.py:
 CAMERA = 0
 ```
 
+---
+
 If you continue to encounter problems, please submit an issue on this repository.
