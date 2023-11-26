@@ -76,7 +76,8 @@ Ensure that your `.env` file is set up correctly:
 
 Default camera:
 
-By default the camera is set in cv2 to camera 0. If this is set incorrectly the program may act in unstale ways. Experiment with different values if you are encountering errors. 
+By default the camera is set in cv2 to camera 0. If this is set incorrectly the program may act in unstale ways. Experiment with different values if you are encountering errors.
+
 This value is a constant located at the top PictureTaking.py:
 ```
 # Setting camera:
