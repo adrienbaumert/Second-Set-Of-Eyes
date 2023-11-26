@@ -15,7 +15,7 @@
 
 # Project: Second-Set-Of-Eyes
 # File: VisionImparedApp.py
-# Version : 1.0.0
+# Version : 1.1.0
 # =================================================
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout

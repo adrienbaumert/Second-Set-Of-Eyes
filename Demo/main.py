@@ -15,7 +15,7 @@
 
 # Project: Second-Set-Of-Eyes
 # File: main.py
-# Version : 1.0.0
+# Version : 1.1.0
 # =================================================
 from VisionImparedApp import Application
 app = Application()

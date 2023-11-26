@@ -15,7 +15,7 @@
 
 # Project: Second-Set-Of-Eyes
 # File: BackendController.py
-# Version : 1.0.0
+# Version : 1.1.0
 # =================================================
 # Performing necessary imports
 from PictureTaking import PictureTaker
