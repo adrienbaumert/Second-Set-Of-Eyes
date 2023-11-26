@@ -47,7 +47,7 @@ pip install -r requirements.txt
 
 3. Rename the `.env.template` file to `.env`
 
-4. Add your Hugging Face user access token and absolute path of your image and speech folder to your `.env` file
+4. Add your Hugging Face user access token and absolute path of your image and speech directory to the `.env` file
 ```
 USER_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 IMAGE_DIRECTORY=xxxx/xxxx/xxxx/xxxx/xxxx/
