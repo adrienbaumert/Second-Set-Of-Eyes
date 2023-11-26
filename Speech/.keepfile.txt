@@ -1,0 +1,1 @@
+This file exists to keep the Speech directory in the github repo for Secomd-Set-Of-Eyes
