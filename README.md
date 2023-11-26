@@ -45,16 +45,16 @@ git clone https://github.com/adrienbaumert/Second-Set-Of-Eyes
 pip install -r requirements.txt
 ```
 
-3. Rename the `.env.template` file to `.env` and input your Hugging Face secret key
+3. Rename the `.env.template` file to `.env` and input your Hugging Face user access token
 ```
-SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+USER_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## Requirement Note
 
 Please note that there are two requirements.txt files contained in this project. Installing the correct one is based off user needs. Installing the requirements.txt in the top level directory will install only the necessary packages for the framework. Installing the requirements.txt in the Demo folder in order to install all necessary packages to use the demo.
 
-## Instructions to Find Hugging Face Secret Key
+## Instructions to Find Hugging Face User Access Token
 https://huggingface.co/docs/api-inference/quicktour
 
 ## Usage
@@ -64,6 +64,22 @@ To start an interactive text session, run `main.py` and follow the prompts in th
 python main.py
 ```
 
-## Troubleshooting
-If you encounter any issues, ensure that your `.env` file is set up correctly and your Hugging Face secret key is valid. If you continue to encounter problems, please submit an issue on this repository.
+## Debugging
+If you encounter any issues, please reference the following:
+
+Ensure that your `.env` file is set up correctly:
+User access token is valid 
+User access token is added to the .env without quotes
+Image and speech directory are hardcoded with their absolute path
+Image and speech directory end with a /
+Image and speech directory are added without quotes
+
+Test default cameras:
+By default the camera is set in cv2 to camera 0. If this is set incorrectly the program may act in unstale ways. Experiment with different values if you are encountering errors. This value is a consonant located in PictureTaking.py
+```
+# Setting camera:
+CAMERA = 0
+```
+
+If you continue to encounter problems, please submit an issue on this repository.
 
